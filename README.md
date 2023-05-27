@@ -29,6 +29,11 @@ go build
 ```
 
 ## Release
+```
+make tag t=v0.0.X m="release_log"
+```
+`v0.0.X` is tag name
+make tag t=v1.2.1 m='new_feature'
 
 ### Version 1.0
 
