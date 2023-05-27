@@ -2,10 +2,10 @@ package core
 
 import (
 	"fmt"
+	"github.com/carsonfeng/xogen/common/utils"
 	"go/ast"
 	"go/token"
 	"strings"
-	"xogen/common/utils"
 )
 
 type (

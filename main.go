@@ -3,10 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/carsonfeng/xogen/core"
+	"github.com/carsonfeng/xogen/testcases"
 	"os"
 	"strings"
-	"xogen/core"
-	"xogen/testcases"
 )
 
 /**
