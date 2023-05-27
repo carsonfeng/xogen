@@ -47,13 +47,13 @@ func main() {
 		panic(err)
 	}
 
-	model, err := core.Parse(input.ModelPath, input.StructNames, input.OutputPath, input.ModelImport)
+	model, err := xogen.Parse(input.ModelPath, input.StructNames, input.OutputPath, input.ModelImport)
 
 	if nil != err {
 		panic(err)
 	}
 
-	if err = core.RenderModelImpl(model, false, input.OutputPath, srcStat.Mode().Perm(), testcases.DaoTpl); nil != err {
+	if err = xogen.RenderModelImpl(model, false, input.OutputPath, srcStat.Mode().Perm(), testcases.DaoTpl); nil != err {
 		panic(err)
 	}
 	fmt.Printf("Xorm generation completed. \ndao file path: %s\n", input.OutputPath)

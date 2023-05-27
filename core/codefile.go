@@ -1,4 +1,4 @@
-package core
+package xogen
 
 import (
 	"go/ast"
