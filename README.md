@@ -18,13 +18,13 @@ xogen is a code generator that can convert models from the "github.com/go-xorm" 
 ### Installing
 
 ```
-go get github.com/example/xogen
+go get github.com/carsonfeng/xogen
 ```
 
 ### Building
 
 ```
-cd $GOPATH/src/github.com/example/xogen
+cd $GOPATH/src/github.com/carsonfeng/xogen
 go build
 ```
 
@@ -42,8 +42,10 @@ xogen [options]
 
 ### Options
 
-- `-input` specifies the input directory for models
-- `-output` specifies the output directory for dao code
-- `-pkg` specifies the name of the package for dao code
-- `-url` specifies the database connection url
-- `-table` specifies the database table name for models
+- `-model_path` specifies the path of model. For Example: `testcases/models/models.go`
+- `-models` specifies the xorm model struct names, separated by comma ',' . For Example: `DemoTeamModel1,DemoUserModel2`
+- `-output_dao` specifies the path of dao output. For Example: `testcases/daos/demo_daos.go`
+- `-model_import` specifies imported package of model. For Example: `xogen/testcases/models`
+
+### Integrated with your projects
+Step 1: Build a tools project. Follow the examples of `main.go` and `./testcases/templated.go` in this project.

@@ -25,6 +25,7 @@ type Flag struct {
 	ModelPath   string
 	StructNames []string
 	OutputPath  string
+	ModelImport string
 }
 
 var input Flag
@@ -34,6 +35,7 @@ func main() {
 	structNames := ""
 	flag.StringVar(&structNames, "models", "DemoTeamModel1,DemoUserModel2", "xorm model struct names, separated by comma ',' ")
 	flag.StringVar(&input.OutputPath, "output_dao", "testcases/daos/demo_daos.go", "path of dao output")
+	flag.StringVar(&input.ModelImport, "model_import", "xogen/testcases/models", "imported package of model")
 	flag.Parse()
 
 	input.StructNames = strings.Split(structNames, ",")
@@ -45,7 +47,7 @@ func main() {
 		panic(err)
 	}
 
-	model, err := core.Parse(input.ModelPath, input.StructNames, input.OutputPath, "xogen/testcases/models")
+	model, err := core.Parse(input.ModelPath, input.StructNames, input.OutputPath, input.ModelImport)
 
 	if nil != err {
 		panic(err)
