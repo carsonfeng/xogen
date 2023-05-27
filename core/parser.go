@@ -16,9 +16,10 @@ type (
 		GetValue string
 	}
 	ModelInfo struct {
-		Package    string
-		Name       string
-		ModelSpecs []XormModelSpec
+		Package     string
+		Name        string
+		ModelSpecs  []XormModelSpec
+		ModelImport string
 	}
 
 	SpecField struct {
@@ -75,16 +76,17 @@ func getDaoNameFromOutputPath(outputPath string) (r string) {
 	return r
 }
 
-func Parse(filename string, modelNames []string, outputPath string) (daoModelInfo *ModelInfo, err error) {
+func Parse(filename string, modelNames []string, outputPath string, modelImport string) (daoModelInfo *ModelInfo, err error) {
 	cf, e := NewCodeFile(filename)
 	if e != nil {
 		err = e
 		return
 	}
 	daoModelInfo = &ModelInfo{
-		Package:    "daos",
-		Name:       getDaoNameFromOutputPath(outputPath),
-		ModelSpecs: []XormModelSpec{},
+		Package:     "daos",
+		Name:        getDaoNameFromOutputPath(outputPath),
+		ModelSpecs:  []XormModelSpec{},
+		ModelImport: modelImport,
 	}
 
 	for _, d := range cf.file.Decls {

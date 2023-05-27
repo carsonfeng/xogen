@@ -15,7 +15,12 @@ func StrInList(s string, l []string) bool {
 }
 
 func FieldToVarName(fieldName string) string {
-	return strings.ToLower(fieldName[:1]) + fieldName[1:]
+	r := strings.ToLower(fieldName[:1]) + fieldName[1:]
+	// sensitive key words
+	if r == "type" {
+		r = "typ"
+	}
+	return r
 }
 
 // CamelToUnderline 驼峰式命名转化为下划线命名
