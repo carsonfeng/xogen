@@ -107,7 +107,7 @@ func (dao *_DemoDao) GetAllDemoTeamModel1Count() (int, error) {
 
 // UpdateDemoTeamModel1 更新UpdateDemoTeamModel1
 func (dao *_DemoDao) UpdateDemoTeamModel1(uid int, data map[string]interface{}) error {
-	affected, err := dao.db().And("uid = ?", uid).Update(data)
+	affected, err := dao.db().Table("demo_team_model1").And("uid = ?", uid).Update(data)
 	if nil != err {
 		return err
 	}
@@ -208,7 +208,7 @@ func (dao *_DemoDao) GetAllDemoUserModel2Count() (int, error) {
 
 // UpdateDemoUserModel2 更新UpdateDemoUserModel2
 func (dao *_DemoDao) UpdateDemoUserModel2(uid int, data map[string]interface{}) error {
-	affected, err := dao.db().And("uid = ?", uid).Update(data)
+	affected, err := dao.db().Table("demo_user_model2").And("uid = ?", uid).Update(data)
 	if nil != err {
 		return err
 	}

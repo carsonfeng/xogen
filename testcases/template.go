@@ -104,7 +104,7 @@ func (dao *_{{$.Name}}Dao) GetAll{{.ModelName}}Count() (int, error) {
 
 // Update{{.ModelName}} 更新Update{{.ModelName}}
 func (dao *_{{$.Name}}Dao) Update{{.ModelName}}({{ range .UniFields }} {{.VarName}} {{.FieldType}}{{.EndMark}}{{ end }}, data map[string]interface{}) error {
-	affected, err := dao.db().{{ range .UniFields }}And("{{.DBField}} = ?", {{.VarName}}).{{ end }}Update(data)
+	affected, err := dao.db().Table("{{.TableName}}").{{ range .UniFields }}And("{{.DBField}} = ?", {{.VarName}}).{{ end }}Update(data)
 	if nil != err{
 		return err
 	}

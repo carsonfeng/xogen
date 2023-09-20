@@ -32,6 +32,7 @@ type (
 
 	XormModelSpec struct {
 		ModelName                       string
+		TableName                       string
 		TypeSpec                        *ast.TypeSpec
 		StructType                      *ast.StructType
 		Fields                          []*ast.Field
@@ -275,6 +276,7 @@ func filterXormTypeDecl(d ast.Decl, modelNames []string) (r []XormModelSpec) {
 			StructType: st,
 			Fields:     st.Fields.List,
 		}
+		xormSpec.TableName = utils.CamelToUnderline(xormSpec.ModelName)
 		if len(xormSpec.XormTagFields()) < 1 {
 			// 完全没有XORM tag的field，忽略
 			continue
